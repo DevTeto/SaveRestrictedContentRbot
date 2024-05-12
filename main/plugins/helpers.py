@@ -57,7 +57,7 @@ async def force_sub(client, channel, id, ft):
         left = x.stringify()
         s, r = (True, ft) if 'left' in left else (False, None)
     except UserNotParticipantError:
-        s, r = True, f"**↢ لاستخدامي يرجي الاشتراك اولا بقناه البوت @{channel} \nثم ارسل /strt مره اخـري**"
+        s, r = True, f"**↢ لاستخدامي يرجي الاشتراك اولا بقناه البوت - https://t.me/{channel} \nثم ارسل /start مره اخـري**"
     except Exception:
         s, r = True, "**اذا اعجبك البوت لا تنسي المشاركه 🤎**"
     return s, r
