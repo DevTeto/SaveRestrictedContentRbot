@@ -5,7 +5,7 @@ from telethon.tl.types import InputMediaPhoto
 
 S = "/start"
 START_PIC = "https://graph.org/file/da97ceca70e55983b4891.png"
-TEXT = "↢ انا هو [بوت حفظ المحتوي المقيد](https://t.me/wx_pm)"
+TEXT = "↢ انا هو [بوت حفظ المحتـوي المقيد](https://t.me/wx_pm)\n\nلاستخدامي مـثال : `https://t.me/m_A_s_k33/72501`"
 
 def is_set_button(data):
     return data == "set"
@@ -20,7 +20,7 @@ async def sett(event):
     msg = await button.get_reply_message()
     await event.delete()
     async with gagan.conversation(event.chat_id) as conv: 
-        xx = await conv.send_message("Send me any image for thumbnail as a `reply` to this message.")
+        xx = await conv.send_message("**↢ هذا هو مطوري الرسمي للتواصل @TOPTETO**")
         x = await conv.get_reply()
         if not x.media:
             xx.edit("No media found.")
@@ -39,7 +39,7 @@ async def sett(event):
 @gagan.on(events.CallbackQuery(pattern=b"rem"))
 async def remt(event):  
     gagan = event.client            
-    await event.edit('Trying... to save Bamby ... Wait')
+    await event.edit('انضم هنا فضلا وتواصل مع المطور @M_A_S_K33')
     try:
         os.remove(f'{event.sender_id}.jpg')
         await event.edit('Removed!')
@@ -50,9 +50,9 @@ async def remt(event):
 async def start_command(event):
     # Creating inline keyboard with buttons
     buttons = [
-        [Button.inline("SET THUMB", data="set"),
-         Button.inline("REM THUMB", data="rem")],
-        [Button.url("انضم فضلا", url="https://t.me/wx_pm")]
+        [Button.inline("‹ المطور ›", data="set"),
+         Button.inline("‹ للمساعده ›", data="rem")],
+        [Button.url("انضـم فضلا", url="https://t.me/wx_pm")]
     ]
 
     # Sending photo with caption and buttons
