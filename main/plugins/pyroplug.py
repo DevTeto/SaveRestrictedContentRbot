@@ -172,7 +172,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i, file_n):
             
             if msg.media and msg.media==MessageMediaType.WEB_PAGE:
                 a = b = True
-                edit = await client.edit_message_text(sender, edit_id, "Cloning.")
+                edit = await client.edit_message_text(sender, edit_id, "انتـظر...")
                 if '--'  in msg.text.html or '**' in msg.text.html or '__' in msg.text.html or '~~' in msg.text.html or '||' in msg.text.html or '```' in msg.text.html or '`' in msg.text.html:
                     await send_message_with_chat_id(client, sender, msg.text.html, parse_mode=ParseMode.HTML)
                     a = False
@@ -185,7 +185,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i, file_n):
                 return None
             if not msg.media and msg.text:
                 a = b = True
-                edit = await client.edit_message_text(sender, edit_id, "Cloning.")
+                edit = await client.edit_message_text(sender, edit_id, "انتـظر....")
                 if '--'  in msg.text.html or '**' in msg.text.html or '__' in msg.text.html or '~~' in msg.text.html or '||' in msg.text.html or '```' in msg.text.html or '`' in msg.text.html:
                     await send_message_with_chat_id(client, sender, msg.text.html, parse_mode=ParseMode.HTML)
                     a = False
@@ -295,7 +295,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i, file_n):
             await client.edit_message_text(sender, edit_id, "Bot is not in that channel/ group \n send the invite link so that bot can join the channel ")
             return None
     else:
-        edit = await client.edit_message_text(sender, edit_id, "Cloning.")
+        edit = await client.edit_message_text(sender, edit_id, "انتـظر....")
         chat =  msg_link.split("/")[-2]
         await copy_message_with_chat_id(client, sender, chat, msg_id)
         await edit.delete()
