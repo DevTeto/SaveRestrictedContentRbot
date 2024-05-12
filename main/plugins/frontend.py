@@ -23,9 +23,9 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger("telethon").setLevel(logging.INFO)
 
-ft = f"To use this bot you've to join @{fs}."
+ft = f"↢ لاستخدام البوت اشتـرك هنا : @{fs}."
 
-message = "Send me the message link you want to start saving from, as a reply to this message."
+message = "↢ ارسل لي المحتوي الذي تريد حفظة \n\n مـثال : `https://t.me/m_A_s_k33/72501`"
           
 process=[]
 timer=[]
@@ -43,7 +43,7 @@ async def clone(event):
     lit=event.text
     li=lit.split("\n")
     if len(li) > 10:
-        await event.reply("max 10 links per message")
+        await event.reply("الحد الأقصى 10 روابط لكل رسالة")
         return
     for li in li:
         #1239
@@ -59,9 +59,9 @@ async def clone(event):
         if s == True:
             await event.reply(r)
             return
-        edit = await event.reply("Processing!")
+        edit = await event.reply("جاري المعالجة..")
         if f'{int(event.sender_id)}' in user:
-            return await edit.edit("Please don't spam links, wait until ongoing process is done.")
+            return await edit.edit("**من فضلك لا ترسل روابط غير مرغوب فيها، انتظر حتى تتم العملية الجارية**")
         user.append(f'{int(event.sender_id)}')
         if "|" in li:
             url = li
@@ -73,7 +73,7 @@ async def clone(event):
             file_name = file_name.strip()                
         try:
             if 't.me/' not in link:
-                await edit.edit("invalid link")
+                await edit.edit("رابط غير صحيح حـاول مجددا")
                 ind = user.index(f'{int(event.sender_id)}')
                 user.pop(int(ind))
                 return
@@ -96,11 +96,11 @@ async def clone(event):
                 m = msg_id
                 await get_msg(userbot, Bot, event.sender_id, edit.id, link, m, file_name)
         except FloodWait as fw:
-            await gagan.send_message(event.sender_id, f'Try again after {fw.value} seconds due to floodwait from telegram.')
+            await gagan.send_message(event.sender_id, f'حاول مرة أخرى بعد ذلك {fw.value} ثانيه..')
             await edit.delete()
         except Exception as e:
             logging.info(e)
-            await gagan.send_message(event.sender_id, f"An error occurred during cloning of `{link}`\n\n**Error:** {str(e)}")
+            await gagan.send_message(event.sender_id, f"حدث خطأ أثناء استنساخ `{link}`\n\n**الخطا:** {str(e)}")
             await edit.delete()
         ind = user.index(f'{int(event.sender_id)}')
         user.pop(int(ind))
