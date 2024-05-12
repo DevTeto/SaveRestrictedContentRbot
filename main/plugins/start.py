@@ -2,6 +2,8 @@ import os
 from .. import bot as gagan
 from telethon import events, Button
 from telethon.tl.types import InputMediaPhoto
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
 S = "/start"
 START_PIC = "https://telegra.ph/file/085234eb548c32d267141.jpg"
