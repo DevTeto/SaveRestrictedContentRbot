@@ -4,8 +4,8 @@ from telethon import events, Button
 from telethon.tl.types import InputMediaPhoto
 
 S = "/start"
-START_PIC = "https://graph.org/file/da97ceca70e55983b4891.png"
-TEXT = "**↯︙اهلاً بك عـزيزي :\n↯︙في بوت حفظ المحتوى المقيد\n↯︙ارسل رابط المنشور فقط**"
+START_PIC = "https://telegra.ph/file/085234eb548c32d267141.jpg"
+TEXT = "**⎉︙مـرحباً انا ‹ [حفظ المحتوي المقيد](https://t.me/wx_pm) ›\n⎉︙استطيع حفظ اي محتوي اياً كان \n⎉︙ارسل رابط المنشور فقط**"
 
 def is_set_button(data):
     return data == "set"
@@ -20,39 +20,39 @@ async def sett(event):
     msg = await button.get_reply_message()
     await event.delete()
     async with gagan.conversation(event.chat_id) as conv: 
-        xx = await conv.send_message("Send me any image for thumbnail as a `reply` to this message.")
+        xx = await conv.send_message("**↢ هذا هو مطوري الرسمي للتواصل @TOPTETO**")
         x = await conv.get_reply()
         if not x.media:
-            xx.edit("No media found.")
+            xx.edit("**↢ هذا هو مطوري الرسمي للتواصل @TOPTETO**")
             return
         mime = x.file.mime_type
         if 'png' not in mime and 'jpg' not in mime and 'jpeg' not in mime:
-            return await xx.edit("No image found.")
+            return await xx.edit("**↢ هذا هو مطوري الرسمي للتواصل @TOPTETO**")
         await xx.delete()
-        t = await event.client.send_message(event.chat_id, 'Trying.')
+        t = await event.client.send_message(event.chat_id, 'جـاري المحاوله.')
         path = await event.client.download_media(x.media)
         if os.path.exists(f'{event.sender_id}.jpg'):
             os.remove(f'{event.sender_id}.jpg')
         os.rename(path, f'./{event.sender_id}.jpg')
-        await t.edit("Temporary thumbnail saved!")
+        await t.edit("انضم هنا فضلا وتواصل مع المطور @M_A_S_K33")
 
 @gagan.on(events.CallbackQuery(pattern=b"rem"))
 async def remt(event):  
     gagan = event.client            
-    await event.edit('Trying... to save Bamby ... Wait')
+    await event.edit('انضم هنا فضلا وتواصل مع المطور @M_A_S_K33')
     try:
         os.remove(f'{event.sender_id}.jpg')
         await event.edit('Removed!')
     except Exception:
-        await event.edit("No thumbnail saved.")                        
+        await event.edit("انضم هنا فضلا وتواصل مع المطور @M_A_S_K33")                        
 
 @gagan.on(events.NewMessage(pattern=f"^{S}"))
 async def start_command(event):
     # Creating inline keyboard with buttons
     buttons = [
-        [Button.inline("SET THUMB", data="set"),
-         Button.inline("REM THUMB", data="rem")],
-        [Button.url("انضم فضلا", url="https://t.me/wx_pm")]
+        [Button.inline("‹ المطور ›", data="set"),
+         Button.inline("‹ للمساعده ›", data="rem")],
+        [Button.url("انضـم فضلا", url="https://t.me/wx_pm")]
     ]
 
     # Sending photo with caption and buttons
@@ -62,4 +62,3 @@ async def start_command(event):
         caption=TEXT,
         buttons=buttons
     )
-
