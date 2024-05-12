@@ -2,12 +2,10 @@ import os
 from .. import bot as gagan
 from telethon import events, Button
 from telethon.tl.types import InputMediaPhoto
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
 S = "/start"
 START_PIC = "https://telegra.ph/file/085234eb548c32d267141.jpg"
-TEXT = "**⎉︙مـرحباً انا ‹ [حفظ المحتوي المقيد](https://t.me/wx_pm) ›\n⎉︙استطيع حفظ اي محتوي اياً كان \n⎉︙ارسل رابط المنشور فقط**"
+TEXT = "⎉︙مـرحباً انا ‹ [حفظ المحتوي المقيد](https://t.me/wx_pm) ›\n⎉︙استطيع حفظ اي محتوي اياً كان \n⎉︙ارسل رابط المنشور فقط"
 
 def is_set_button(data):
     return data == "set"
@@ -60,7 +58,7 @@ async def start_command(event):
     # Sending photo with caption and buttons
     await gagan.send_file(
         event.chat_id,
-        Photo=START_PIC,
+        file=START_PIC,
         caption=TEXT,
         buttons=buttons
     )
