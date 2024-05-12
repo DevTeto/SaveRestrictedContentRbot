@@ -5,7 +5,7 @@ from telethon.tl.types import InputMediaPhoto
 
 S = "/start"
 START_PIC = "https://graph.org/file/da97ceca70e55983b4891.png"
-TEXT = "↢ انـا [بوت حفظ المحتوي المقيد 📥](https://t.me/wx_pm)\n\n-لاستخدامي مـثال : `https://t.me/m_A_s_k33/72501`"
+TEXT = "**↯︙اهلاً بك عـزيزي :\n↯︙في بوت حفظ المحتوى المقيد\n↯︙ارسل رابط المنشور فقط**"
 
 def is_set_button(data):
     return data == "set"
@@ -20,26 +20,26 @@ async def sett(event):
     msg = await button.get_reply_message()
     await event.delete()
     async with gagan.conversation(event.chat_id) as conv: 
-        xx = await conv.send_message("**↢ هذا هو مطوري الرسمي للتواصل @TOPTETO**")
+        xx = await conv.send_message("Send me any image for thumbnail as a `reply` to this message.")
         x = await conv.get_reply()
         if not x.media:
-            xx.edit("**↢ هذا هو مطوري الرسمي للتواصل @TOPTETO**")
+            xx.edit("No media found.")
             return
         mime = x.file.mime_type
         if 'png' not in mime and 'jpg' not in mime and 'jpeg' not in mime:
-            return await xx.edit("**↢ هذا هو مطوري الرسمي للتواصل @TOPTETO**")
+            return await xx.edit("No image found.")
         await xx.delete()
-        t = await event.client.send_message(event.chat_id, 'جـاري المحاوله.')
+        t = await event.client.send_message(event.chat_id, 'Trying.')
         path = await event.client.download_media(x.media)
         if os.path.exists(f'{event.sender_id}.jpg'):
             os.remove(f'{event.sender_id}.jpg')
         os.rename(path, f'./{event.sender_id}.jpg')
-        await t.edit("انضم هنا فضلا وتواصل مع المطور @M_A_S_K33")
+        await t.edit("Temporary thumbnail saved!")
 
 @gagan.on(events.CallbackQuery(pattern=b"rem"))
 async def remt(event):  
     gagan = event.client            
-    await event.edit('انضم هنا فضلا وتواصل مع المطور @M_A_S_K33')
+    await event.edit('Trying... to save Bamby ... Wait')
     try:
         os.remove(f'{event.sender_id}.jpg')
         await event.edit('Removed!')
@@ -50,9 +50,9 @@ async def remt(event):
 async def start_command(event):
     # Creating inline keyboard with buttons
     buttons = [
-        [Button.inline("‹ المطور ›", data="set"),
-         Button.inline("‹ للمساعده ›", data="rem")],
-        [Button.url("انضـم فضلا", url="https://t.me/wx_pm")]
+        [Button.inline("SET THUMB", data="set"),
+         Button.inline("REM THUMB", data="rem")],
+        [Button.url("انضم فضلا", url="https://t.me/wx_pm")]
     ]
 
     # Sending photo with caption and buttons
