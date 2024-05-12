@@ -5,7 +5,7 @@ from telethon.tl.types import InputMediaPhoto
 
 S = "/start"
 START_PIC = "https://telegra.ph/file/085234eb548c32d267141.jpg"
-TEXT = "**⎉︙مـرحباً انا ‹ [حفظ المحتوي المقيد](https://t.me/wx_pm) ›\n⎉︙استطيع حفظ اي محتوي اياً كان \n⎉︙ارسل رابط المنشور فقط**"
+TEXT = "⎉︙مـرحباً انا ‹ [حفظ المحتوي المقيد](https://t.me/wx_pm) ›\n⎉︙استطيع حفظ اي محتوي اياً كان \n⎉︙ارسل رابط المنشور فقط"
 
 def is_set_button(data):
     return data == "set"
