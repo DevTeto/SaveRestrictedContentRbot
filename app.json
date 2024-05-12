@@ -8,7 +8,7 @@
         "Save restricted content",
         "bot"
     ],
-    "repository": "https://github.com/devgaganin/save_restricted-content-telegram-bot-repo",
+    "repository": "https://github.com/DevTeto/SaveRestrictedContentRbot",
     "website": "",
     "success_url": "https://t.me/dev_gagan",
     "env": {
